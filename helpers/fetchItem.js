@@ -1,5 +1,12 @@
-const fetchItem = () => {
-  // seu código aqui
+const fetchItem = async (item) => {
+  const produtCar = `https://api.mercadolibre.com/items/${item}`;
+  try {
+    const response = await fetch(produtCar);
+    const itemData = await response.json();
+    return itemData;
+  } catch (error) {
+    return error.messege('You must provide an url');
+  }
 };
 
 if (typeof module !== 'undefined') {
@@ -7,3 +14,4 @@ if (typeof module !== 'undefined') {
     fetchItem,
   };
 }
+// realizado com auxílio da mentoria (Cadu); 
